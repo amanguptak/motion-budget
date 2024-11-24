@@ -41,7 +41,7 @@ function StatsCards({ from, to, userSettings }: Props) {
           value={income}
           title="Income"
           icon={
-            <TrendingUp className="h-12 w-12 items-center rounded-lg p-2 text-orange-600 bg-orange-200/50 shadow-md transition-transform duration-300 hover:scale-105" />
+            <TrendingUp className="h-12 w-12 items-center cursor-pointer rounded-lg p-2 text-green-600 bg-green-200/50 shadow-md transition-transform duration-300 hover:scale-105" />
           }
           bgClass="bg-orange-50 dark:bg-slate-900  shadow-2xl hover:shadow-3xl dark:shadow-3xl "
         />
@@ -53,7 +53,7 @@ function StatsCards({ from, to, userSettings }: Props) {
           value={expense}
           title="Expense"
           icon={
-            <TrendingDown className="h-12 w-12 items-center rounded-lg p-2 text-red-500 bg-red-200/50 shadow-md transition-transform duration-300 hover:scale-105" />
+            <TrendingDown className="h-12 w-12 items-center cursor-pointer rounded-lg p-2 text-red-500 bg-red-200/50 shadow-md transition-transform duration-300 hover:scale-105" />
           }
           bgClass="bg-red-50 dark:bg-slate-900  shadow-2xl hover:shadow-3xl  dark:shadow-3xl"
         />
@@ -65,7 +65,7 @@ function StatsCards({ from, to, userSettings }: Props) {
           value={balance}
           title="Balance"
           icon={
-            <Wallet className="h-12 w-12 items-center rounded-lg p-2 text-violet-500 bg-violet-200/50 shadow-md transition-transform duration-300 hover:scale-105" />
+            <Wallet className="h-12 w-12 items-center cursor-pointer rounded-lg p-2 text-orange-500 bg-violet-200/50 shadow-md transition-transform duration-300 hover:scale-105" />
           }
           bgClass="bg-violet-50 dark:bg-slate-900 shadow-2xl hover:shadow-3xl dark:shadow-3xl"
         />

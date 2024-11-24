@@ -16,7 +16,7 @@ function TransactionsPage() {
   return (
     <>
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-orange-500 to-orange-400 dark:from-gray-800 dark:to-gray-700 text-gray-300 shadow-lg">
+      <div className="bg-gradient-to-r from-orange-400 to-orange-300 dark:from-gray-800 dark:to-gray-700 text-gray-300 shadow-lg">
         <div className="container flex flex-wrap items-center justify-between gap-6 py-8 px-4">
           <div>
             <p className="text-3xl font-bold">Transactions History</p>

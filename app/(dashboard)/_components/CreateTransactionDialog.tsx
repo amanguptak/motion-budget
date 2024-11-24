@@ -83,7 +83,6 @@ function CreateTransactionDialog({ trigger, type }: Props) {
         category: undefined,
       });
 
-      // After creating a transaction, we need to invalidate the overview query which will refetch data in the homepage
       queryClient.invalidateQueries({
         queryKey: ["overview"],
       });
@@ -107,23 +106,26 @@ function CreateTransactionDialog({ trigger, type }: Props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-w-lg w-full p-4 sm:p-6">
         <DialogHeader>
           <DialogTitle>
             Create a new{" "}
             <span
               className={cn(
-                "m-1",
+                "m-1 font-semibold",
                 type === "income" ? "text-emerald-500" : "text-red-500"
               )}
             >
               {type}
-            </span>
+            </span>{" "}
             transaction
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>
-          <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+          <form
+            className="space-y-6"
+            onSubmit={form.handleSubmit(onSubmit)}
+          >
             <FormField
               control={form.control}
               name="description"
@@ -131,7 +133,11 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <Input defaultValue={""} {...field} />
+                    <Input
+                      defaultValue={""}
+                      {...field}
+                      className="border-orange-400 focus:ring-orange-400"
+                    />
                   </FormControl>
                   <FormDescription>
                     Transaction description (optional)
@@ -146,7 +152,12 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                 <FormItem>
                   <FormLabel>Amount</FormLabel>
                   <FormControl>
-                    <Input defaultValue={0} type="number" {...field} />
+                    <Input
+                      defaultValue={0}
+                      type="number"
+                      {...field}
+                      className="border-orange-400 focus:ring-orange-400"
+                    />
                   </FormControl>
                   <FormDescription>
                     Transaction amount (required)
@@ -155,12 +166,13 @@ function CreateTransactionDialog({ trigger, type }: Props) {
               )}
             />
 
-            <div className="flex items-center justify-between gap-2">
+            {/* Responsive layout for category and transaction date */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="category"
                 render={({ field }) => (
-                  <FormItem className="flex flex-col">
+                  <FormItem>
                     <FormLabel>Category</FormLabel>
                     <FormControl>
                       <CategoryPicker
@@ -179,7 +191,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                 control={form.control}
                 name="date"
                 render={({ field }) => (
-                  <FormItem className="flex flex-col">
+                  <FormItem>
                     <FormLabel>Transaction date</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
@@ -187,7 +199,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                           <Button
                             variant={"outline"}
                             className={cn(
-                              "w-[200px] pl-3 text-left font-normal",
+                              "w-full text-left font-normal border-orange-400",
                               !field.value && "text-muted-foreground"
                             )}
                           >
@@ -220,7 +232,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
             </div>
           </form>
         </Form>
-        <DialogFooter>
+        <DialogFooter className="flex flex-wrap gap-4 justify-end">
           <DialogClose asChild>
             <Button
               type="button"
@@ -228,11 +240,16 @@ function CreateTransactionDialog({ trigger, type }: Props) {
               onClick={() => {
                 form.reset();
               }}
+              className="bg-orange-400 text-white hover:bg-orange-500"
             >
               Cancel
             </Button>
           </DialogClose>
-          <Button onClick={form.handleSubmit(onSubmit)} disabled={isPending}>
+          <Button
+            onClick={form.handleSubmit(onSubmit)}
+            disabled={isPending}
+            className="bg-orange-400 text-white hover:bg-orange-500"
+          >
             {!isPending && "Create"}
             {isPending && <Loader2 className="animate-spin" />}
           </Button>
