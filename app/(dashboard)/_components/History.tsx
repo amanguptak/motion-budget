@@ -135,34 +135,34 @@ function History({ userSettings }: { userSettings: UserSettings }) {
   };
 
   return (
-    <div className="container mx-auto">
-      <div className="flex justify-between items-center">
+    <div className="w-full ">
+      <div className="flex flex-wrap justify-between items-center space-y-2">
         <HistoryPeriodSelector
           period={period}
           setPeriod={setPeriod}
           timeframe={timeframe}
           setTimeframe={setTimeframe}
         />
-         <div className="flex h-10 gap-2">
-              <Badge
-                variant={"outline"}
-                className="flex items-center gap-2 text-sm dark:bg-emerald-500"
-              >
-                <div className="h-4 w-4 rounded-full dark:bg-emerald-200 bg-emerald-500"></div>
-                Income
-              </Badge>
-              <Badge
-                variant={"outline"}
-                className="flex items-center gap-2 text-sm dark:bg-red-500"
-              >
-                <div className="h-4 w-4 rounded-full dark:bg-red-300  bg-red-500"></div>
-                Expense
-              </Badge>
-            </div>
+        <div className="flex flex-wrap gap-2">
+          <Badge
+            variant={"outline"}
+            className="flex items-center gap-2 text-sm dark:bg-emerald-500"
+          >
+            <div className="h-4 w-4 rounded-full dark:bg-emerald-200 bg-emerald-500"></div>
+            Income
+          </Badge>
+          <Badge
+            variant={"outline"}
+            className="flex items-center gap-2 text-sm dark:bg-red-500"
+          >
+            <div className="h-4 w-4 rounded-full dark:bg-red-300  bg-red-500"></div>
+            Expense
+          </Badge>
+        </div>
       </div>
 
       {/* Bar Chart Card */}
-      <Card className="mt-4 w-full bg-white dark:bg-slate-900 shadow-md">
+      <Card className="w-full bg-orange-50 border-0 dark:bg-slate-900 shadow-md my-2 ">
         <CardHeader>
           <CardTitle className="text-center text-lg font-bold text-gray-800 dark:text-gray-200">
             Transaction History
@@ -238,7 +238,7 @@ function History({ userSettings }: { userSettings: UserSettings }) {
       </Card>
 
       {/* Pie Chart Card */}
-      <Card className="mt-4 w-full bg-white dark:bg-slate-900 shadow-md">
+      <Card className="w-full bg-orange-50 border-0 dark:bg-slate-900 shadow-md my-2">
         <CardHeader>
           <CardTitle className="text-center text-lg font-bold text-gray-800 dark:text-gray-200">
             Financial Overview
@@ -275,7 +275,7 @@ function History({ userSettings }: { userSettings: UserSettings }) {
                   {aggregateData.map((item, index) => (
                     <div
                       key={index}
-                      className="flex items-center mb-2 cursor-pointer"
+                      className="flex items-center cursor-pointer"
                       onMouseEnter={() => setActiveIndex(index)}
                     >
                       <div
@@ -315,7 +315,7 @@ function CustomTooltip({ active, payload, formatter }: any) {
   const { expense, income } = data;
 
   return (
-    <div className="min-w-[300px] rounded border bg-background p-4">
+    <div className="min-w-[300px] rounded border bg-background p-2">
       <TooltipRow
         formatter={formatter}
         label="Expense"
@@ -334,7 +334,7 @@ function CustomTooltip({ active, payload, formatter }: any) {
         formatter={formatter}
         label="Balance"
         value={income - expense}
-        bgColor="bg-gray-100"
+        bgColor="bg-orange-400"
         textColor="text-foreground"
       />
     </div>
@@ -362,7 +362,7 @@ function TooltipRow({
   );
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1">
       <div className={cn("h-4 w-4 rounded-full", bgColor)} />
       <div className="flex w-full justify-between">
         <p className="text-sm text-muted-foreground">{label}</p>

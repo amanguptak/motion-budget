@@ -60,20 +60,19 @@ async function page() {
       </section>
 
       {/* Dashboard Content */}
-      <main className="container mx-auto py-12 px-4 sm:px-6 lg:px-8 space-y-9">
+      <main className="container mx-auto py-12 px-3  lg:px-8 space-y-9">
         {/* Overview Card */}
-        <div className="flex-1  dark:bg-gray-800 rounded-lg p-6 min-w-[300px]">
-          <h2 className="text-xl font-semibold mb-4 text-orange-700 dark:text-orange-400">
+        <h2 className="text-xl font-semibold p-2 md:p-4 text-orange-700 dark:text-orange-400">
             Overview
           </h2>
+        <div className="flex-1  dark:bg-gray-800 rounded-lg  min-w-[300px]">
+         
           <Overview userSettings={userSettings} />
         </div>
 
         {/* History Card */}
-        <div className="flex-1  dark:bg-gray-800 rounded-lg p-6 min-w-[300px]">
-          <h2 className="text-xl font-semibold mb-4 text-orange-700 dark:text-orange-400">
-            Transaction History
-          </h2>
+        <div className="flex-1  dark:bg-gray-800 rounded-lg p-2 md:p-4 min-w-[300px]">
+          
           <History userSettings={userSettings} />
         </div>
 

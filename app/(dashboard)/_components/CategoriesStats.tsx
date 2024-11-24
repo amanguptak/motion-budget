@@ -70,7 +70,7 @@ function CategoriesCard({
   );
 
   return (
-    <Card className="h-fit w-full cursor-pointer bg-orange-50 p-2 dark:bg-slate-900 rounded-lg shadow-lg  hover:shadow-2xl hover:shadow-orange-500 transition-transform duration-300 hover:-translate-y-2">
+    <Card className="h-fit w-full cursor-pointer bg-orange-50 p-1 dark:bg-slate-900 rounded-lg shadow-lg  hover:shadow-2xl hover:shadow-orange-500 transition-transform duration-300 hover:-translate-y-2">
 
       <CardHeader>
         <CardTitle className="grid grid-flow-row justify-between gap-2  text-muted-foreground md:grid-flow-col">

@@ -55,7 +55,7 @@ function Overview({ userSettings }: { userSettings: UserSettings }) {
         </div>
 
         {/* Categories Stats */}
-        <div className="flex flex-wrap lg:flex-nowrap w-full gap-6">
+        <div className="flex flex-wrap lg:flex-nowrap w-full gap-6 ">
           <CategoriesStats
             userSettings={userSettings}
             from={dateRange.from}
