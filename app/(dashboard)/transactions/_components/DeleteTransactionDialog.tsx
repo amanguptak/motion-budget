@@ -17,11 +17,11 @@ import { toast } from "sonner";
 
 interface Props {
   open: boolean;
-  setOpen: (open: boolean) => void;
+  setOpenDelete: (open: boolean) => void;
   transactionId: string;
 }
 
-function DeleteTransactionDialog({ open, setOpen, transactionId }: Props) {
+function DeleteTransactionDialog({ open, setOpenDelete, transactionId }: Props) {
   const queryClient = useQueryClient();
 
   const deleteMutation = useMutation({
@@ -42,7 +42,7 @@ function DeleteTransactionDialog({ open, setOpen, transactionId }: Props) {
     },
   });
   return (
-    <AlertDialog open={open} onOpenChange={setOpen}>
+    <AlertDialog open={open} onOpenChange={setOpenDelete}>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>

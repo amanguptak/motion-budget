@@ -32,7 +32,7 @@ import { Button } from "@/components/ui/button";
 import { DataTableViewOptions } from "@/components/datatable/ColumnToggle";
 
 import { download, generateCsv, mkConfig } from "export-to-csv";
-import { DownloadIcon, MoreHorizontal, TrashIcon } from "lucide-react";
+import { DownloadIcon, MoreHorizontal, Pencil, TrashIcon } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -42,6 +42,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import DeleteTransactionDialog from "@/app/(dashboard)/transactions/_components/DeleteTransactionDialog";
+import CreateTransactionDialog from "@/app/(dashboard)/_components/CreateTransactionDialog";
+import { TransactionType } from "@/lib/types";
+import EditTransactionDialog from "../../_components/EditTransaction";
 
 interface Props {
   from: Date;
@@ -311,7 +314,7 @@ function RowActions({ transaction }: { transaction: TransactionHistoryRow }) {
     <>
       <DeleteTransactionDialog
         open={showDeleteDialog}
-        setOpen={setShowDeleteDialog}
+        setOpenDelete={setShowDeleteDialog}
         transactionId={transaction.id}
       />
       <DropdownMenu>
@@ -332,6 +335,21 @@ function RowActions({ transaction }: { transaction: TransactionHistoryRow }) {
           >
             <TrashIcon className="h-4 w-4 text-muted-foreground" />
             Delete
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            className="flex items-center gap-2"
+            onSelect={(e) => e.preventDefault()} // Prevent dropdown from closing
+          >
+            <EditTransactionDialog
+              trigger={
+                <button className="dark:bg-slate-950 flex items-center dark:hover:bg-slate-800 justify-center bg-white text-black gap-2 dark:text-white hover:bg-slate-50 hover:text-slate-700">
+                  <Pencil className="h-4 w-4 text-muted-foreground" />
+                  Edit
+                </button>
+              }
+              type={transaction.type as TransactionType} 
+              transactionId={transaction.id}
+            />
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
