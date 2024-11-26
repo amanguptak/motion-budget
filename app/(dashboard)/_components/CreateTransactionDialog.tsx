@@ -195,7 +195,11 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Transaction date</FormLabel>
-                    <Popover>
+                    <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}
+                    //  open={open}
+                    //  onOpenChange={setOpen}
+                     modal={false}
+                    >
                       <PopoverTrigger asChild>
                         <FormControl>
                           <Button
@@ -206,7 +210,7 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                             )}
                              // Add event handlers for touch and click
               onClick={() => setIsPopoverOpen(!isPopoverOpen)}
-              onTouchStart={() => setIsPopoverOpen(!isPopoverOpen)}
+              // onTouchStart={() => setIsPopoverOpen(!isPopoverOpen)}
                           >
                             {field.value ? (
                               format(field.value, "PPP")
@@ -217,7 +221,13 @@ function CreateTransactionDialog({ trigger, type }: Props) {
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0">
+                      <PopoverContent className="w-auto p-0"
+                       onOpenAutoFocus={(event: Event) => event.preventDefault()}
+                       onCloseAutoFocus={(event: Event) => event.preventDefault()}
+                       onPointerDownOutside={(event) => event.preventDefault()}
+                       onInteractOutside={(event) => event.preventDefault()}
+                
+                      >
                         <Calendar
                           mode="single"
                           selected={field.value}
