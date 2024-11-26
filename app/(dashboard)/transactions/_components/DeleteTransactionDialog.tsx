@@ -43,7 +43,7 @@ function DeleteTransactionDialog({ open, setOpenDelete, transactionId }: Props) 
   });
   return (
     <AlertDialog open={open} onOpenChange={setOpenDelete}>
-      <AlertDialogContent>
+      <AlertDialogContent className="bg-orange-100 border-0 dark:bg-slate-950 dark:border dark:border-orange-300">
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
@@ -52,8 +52,9 @@ function DeleteTransactionDialog({ open, setOpenDelete, transactionId }: Props) 
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel className="bg-orange-500 hover:bg-orange-400 text-white">Cancel</AlertDialogCancel>
           <AlertDialogAction
+          className="bg-rose-500 text-white hover:bg-rose-700"
             onClick={() => {
               toast.loading("Deleting transaction...", {
                 id: transactionId,

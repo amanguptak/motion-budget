@@ -47,7 +47,7 @@ function DeleteCategoryDialog({ category, trigger }: Props) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="border-2 border-orange-300">
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
@@ -56,8 +56,9 @@ function DeleteCategoryDialog({ category, trigger }: Props) {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel className="bg-orange-500 text-white">Cancel</AlertDialogCancel>
           <AlertDialogAction
+          className="bg-rose-600"
             onClick={() => {
               toast.loading("Deleting category...", {
                 id: categoryIdentifier,
