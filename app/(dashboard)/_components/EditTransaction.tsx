@@ -431,7 +431,17 @@ function EditTransactionDialog({ trigger, type, transactionId }: Props) {
       >
         <DialogHeader>
           <DialogTitle className="text-lg font-semibold">
-            Edit Transaction
+            Edit 
+            <span
+              className={cn(
+                "m-1 font-semibold",
+                type === "income" ? "text-emerald-500" : "text-red-500"
+              )}
+            >
+              {type}
+            </span>
+            
+            Transaction
           </DialogTitle>
         </DialogHeader>
         <Form {...form}>

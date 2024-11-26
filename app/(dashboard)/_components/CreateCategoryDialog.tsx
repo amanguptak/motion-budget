@@ -114,7 +114,7 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="dark:border dark:border-orange-300 bg-orange-50 dark:bg-slate-950">
         <DialogHeader>
           <DialogTitle>
             Create
@@ -182,7 +182,7 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
                           )}
                         </Button>
                       </PopoverTrigger>
-                      <PopoverContent className="w-full">
+                      <PopoverContent className="w-full max-w-[90vw] sm:max-w-md max-h-[60vh] overflow-auto">
                         <Picker
                           data={data}
                           theme={theme.resolvedTheme}
@@ -213,7 +213,7 @@ function CreateCategoryDialog({ type, successCallback, trigger }: Props) {
               Cancel
             </Button>
           </DialogClose>
-          <Button onClick={form.handleSubmit(onSubmit)} disabled={isPending}>
+          <Button onClick={form.handleSubmit(onSubmit)} disabled={isPending} className="bg-orange-400 text-white ">
             {!isPending && "Create"}
             {isPending && <Loader2 className="animate-spin" />}
           </Button>
